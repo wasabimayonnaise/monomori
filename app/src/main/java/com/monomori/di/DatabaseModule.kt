@@ -4,6 +4,10 @@ import android.content.Context
 import androidx.room.Room
 import com.monomori.data.local.dao.*
 import com.monomori.data.local.database.MonomoriDatabase
+import com.monomori.data.remote.api.DiscogsApi
+import com.monomori.data.remote.api.GoogleBooksApi
+import com.monomori.data.remote.api.TmdbApi
+import com.monomori.data.repository.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,7 +16,7 @@ import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 /**
- * Hilt module for providing database-related dependencies
+ * Hilt module for providing database-related dependencies and repositories
  */
 @Module
 @InstallIn(SingletonComponent::class)
@@ -96,5 +100,49 @@ object DatabaseModule {
     @Singleton
     fun provideComicDao(database: MonomoriDatabase): ComicDao {
         return database.comicDao()
+    }
+    
+    // Repositories
+    @Provides
+    @Singleton
+    fun provideBookRepository(
+        bookDao: BookDao,
+        googleBooksApi: GoogleBooksApi
+    ): BookRepository {
+        return BookRepository(bookDao, googleBooksApi)
+    }
+    
+    @Provides
+    @Singleton
+    fun provideMovieRepository(
+        movieDao: MovieDao,
+        tmdbApi: TmdbApi
+    ): MovieRepository {
+        return MovieRepository(movieDao, tmdbApi)
+    }
+    
+    @Provides
+    @Singleton
+    fun provideMusicRepository(
+        musicDao: MusicDao,
+        discogsApi: DiscogsApi
+    ): MusicRepository {
+        return MusicRepository(musicDao, discogsApi)
+    }
+    
+    @Provides
+    @Singleton
+    fun provideVideoGameRepository(
+        videoGameDao: VideoGameDao
+    ): VideoGameRepository {
+        return VideoGameRepository(videoGameDao)
+    }
+    
+    @Provides
+    @Singleton
+    fun provideComicRepository(
+        comicDao: ComicDao
+    ): ComicRepository {
+        return ComicRepository(comicDao)
     }
 }
