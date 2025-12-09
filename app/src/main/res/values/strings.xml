@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">monomori</string>
+    <string name="app_name_kanji">物守り</string>
+    <string name="app_tagline">Guardian of Things</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_collections">Collections</string>
+    <string name="nav_search">Search</string>
+    <string name="nav_settings">Settings</string>
+    
+    <!-- Home Screen -->
+    <string name="home_title">物守り</string>
+    <string name="home_subtitle">Guardian of Things</string>
+    <string name="home_welcome">Welcome to your collection</string>
+    <string name="home_total_items">Total Items</string>
+    <string name="home_categories">Categories</string>
+    <string name="home_recent">Recent Additions</string>
+    <string name="home_view_all">View All</string>
+    
+    <!-- Collection Categories -->
+    <string name="category_books">Books</string>
+    <string name="category_figures">Figures &amp; Statues</string>
+    <string name="category_music">Music</string>
+    <string name="category_movies">Movies &amp; TV</string>
+    <string name="category_games">Video Games</string>
+    <string name="category_cards">Trading Cards</string>
+    <string name="category_models">Model Kits</string>
+    <string name="category_magazines">Magazines</string>
+    <string name="category_art">Art &amp; Prints</string>
+    <string name="category_custom">Custom</string>
+    
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_theme_mode">Theme Mode</string>
+    <string name="settings_color_theme">Color Theme</string>
+    <string name="settings_data">Data</string>
+    <string name="settings_backup">Backup &amp; Restore</string>
+    <string name="settings_export">Export Data</string>
+    <string name="settings_import">Import Data</string>
+    <string name="settings_about">About</string>
+    <string name="settings_version">Version</string>
+    
+    <!-- Theme Modes -->
+    <string name="theme_mode_dark">Dark</string>
+    <string name="theme_mode_light">Light</string>
+    <string name="theme_mode_system">System Default</string>
+    
+    <!-- Color Themes -->
+    <string name="color_theme_monomori">Monomori Default</string>
+    <string name="color_theme_sakura">Sakura</string>
+    <string name="color_theme_matcha">Matcha</string>
+    <string name="color_theme_ocean">Ocean</string>
+    <string name="color_theme_sunset">Sunset</string>
+    <string name="color_theme_dynamic">Material You</string>
+    
+    <!-- Common Actions -->
+    <string name="action_add">Add</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_save">Save</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_search">Search</string>
+    <string name="action_filter">Filter</string>
+    <string name="action_sort">Sort</string>
+    
+    <!-- Item Fields -->
+    <string name="field_title">Title</string>
+    <string name="field_category">Category</string>
+    <string name="field_subcategory">Subcategory</string>
+    <string name="field_date_added">Date Added</string>
+    <string name="field_purchase_date">Purchase Date</string>
+    <string name="field_purchase_price">Purchase Price</string>
+    <string name="field_condition">Condition</string>
+    <string name="field_notes">Notes</string>
+    <string name="field_tags">Tags</string>
+    
+    <!-- Empty States -->
+    <string name="empty_collection">Your collection is empty</string>
+    <string name="empty_collection_subtitle">Add your first item to get started</string>
+    
+    <!-- Error Messages -->
+    <string name="error_generic">Something went wrong</string>
+    <string name="error_loading">Failed to load data</string>
+    <string name="error_saving">Failed to save changes</string>
+</resources>
