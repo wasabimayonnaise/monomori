@@ -239,4 +239,72 @@ class Converters {
             }
         }
     }
+    
+    // ReadStatus converters
+    @TypeConverter
+    fun fromReadStatus(value: ReadStatus?): String? {
+        return value?.name
+    }
+    
+    @TypeConverter
+    fun toReadStatus(value: String?): ReadStatus? {
+        return value?.let {
+            try {
+                ReadStatus.valueOf(it)
+            } catch (e: IllegalArgumentException) {
+                null
+            }
+        }
+    }
+    
+    // WatchStatus converters
+    @TypeConverter
+    fun fromWatchStatus(value: WatchStatus?): String? {
+        return value?.name
+    }
+    
+    @TypeConverter
+    fun toWatchStatus(value: String?): WatchStatus? {
+        return value?.let {
+            try {
+                WatchStatus.valueOf(it)
+            } catch (e: IllegalArgumentException) {
+                null
+            }
+        }
+    }
+    
+    // ListenStatus converters
+    @TypeConverter
+    fun fromListenStatus(value: ListenStatus?): String? {
+        return value?.name
+    }
+    
+    @TypeConverter
+    fun toListenStatus(value: String?): ListenStatus? {
+        return value?.let {
+            try {
+                ListenStatus.valueOf(it)
+            } catch (e: IllegalArgumentException) {
+                null
+            }
+        }
+    }
+    
+    // PlayStatus converters
+    @TypeConverter
+    fun fromPlayStatus(value: PlayStatus?): String? {
+        return value?.name
+    }
+    
+    @TypeConverter
+    fun toPlayStatus(value: String?): PlayStatus? {
+        return value?.let {
+            try {
+                PlayStatus.valueOf(it)
+            } catch (e: IllegalArgumentException) {
+                null
+            }
+        }
+    }
 }

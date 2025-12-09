@@ -47,5 +47,12 @@ data class VideoGameEntity(
     val caseCondition: ItemCondition? = null,
     val manualCondition: ItemCondition? = null,
     val isCompleteInBox: Boolean = false,
-    val notes: String? = null
+    val notes: String? = null,
+    
+    // Additional fields for API integration
+    val coverImageUrl: String? = null,
+    val genres: List<String> = emptyList(),
+    val description: String? = null,
+    val rating: Float? = null, // User rating 0.0-5.0
+    val playStatus: com.monomori.data.model.PlayStatus? = null
 )

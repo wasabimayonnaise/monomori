@@ -91,4 +91,10 @@ object DatabaseModule {
     fun provideCustomItemDao(database: MonomoriDatabase): CustomItemDao {
         return database.customItemDao()
     }
+    
+    @Provides
+    @Singleton
+    fun provideComicDao(database: MonomoriDatabase): ComicDao {
+        return database.comicDao()
+    }
 }
