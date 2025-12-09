@@ -181,18 +181,6 @@ com.monomori/
    
    **Note:** The app works without API keys, but you'll need to manually enter all item details.
 
-2. **(Optional) Set up API keys**
-   
-   For auto-fill features with Google Books, TMDB, and Discogs APIs:
-   ```bash
-   cp local.properties.example local.properties
-   # Edit local.properties and add your API keys
-   ```
-   
-   See [API_SETUP.md](API_SETUP.md) for detailed instructions on obtaining free API keys.
-   
-   **Note:** The app works without API keys, but you'll need to manually enter all item details.
-
 3. **Open in Android Studio**
    - File → Open → Select the `monomori` directory
    - Wait for Gradle sync to complete

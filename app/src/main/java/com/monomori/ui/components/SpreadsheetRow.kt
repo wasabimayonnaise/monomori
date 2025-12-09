@@ -70,7 +70,7 @@ fun SpreadsheetRow(
     }
     
     if (!isHeader) {
-        Divider(
+        HorizontalDivider(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
