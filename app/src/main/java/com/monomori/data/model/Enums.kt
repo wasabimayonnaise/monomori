@@ -127,6 +127,49 @@ enum class BuildStatus {
 }
 
 /**
+ * Read status for books, comics, and manga
+ */
+enum class ReadStatus {
+    UNREAD,
+    READING,
+    COMPLETED,
+    ON_HOLD,
+    DROPPED
+}
+
+/**
+ * Watch status for movies and TV shows
+ */
+enum class WatchStatus {
+    UNWATCHED,
+    WATCHING,
+    COMPLETED,
+    ON_HOLD,
+    DROPPED
+}
+
+/**
+ * Listen status for music
+ */
+enum class ListenStatus {
+    NOT_LISTENED,
+    LISTENING,
+    COMPLETED,
+    FAVORITE
+}
+
+/**
+ * Play status for video games
+ */
+enum class PlayStatus {
+    BACKLOG,
+    PLAYING,
+    COMPLETED,
+    ON_HOLD,
+    ABANDONED
+}
+
+/**
  * Type definitions for custom fields
  */
 enum class CustomFieldType {

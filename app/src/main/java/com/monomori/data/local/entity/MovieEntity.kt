@@ -48,5 +48,15 @@ data class MovieEntity(
     val tmdbId: String? = null,
     val imdbId: String? = null,
     val japaneseTitle: String? = null,
-    val notes: String? = null
+    val notes: String? = null,
+    
+    // Additional fields for API integration
+    val overview: String? = null,
+    val posterImageUrl: String? = null,
+    val backdropImageUrl: String? = null,
+    val cast: List<String> = emptyList(),
+    val genres: List<String> = emptyList(),
+    val rating: Float? = null, // User rating 0.0-5.0
+    val watchStatus: com.monomori.data.model.WatchStatus? = null,
+    val format: String? = null // DVD, Blu-ray, Digital, 4K
 )

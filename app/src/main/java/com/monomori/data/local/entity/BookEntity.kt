@@ -50,5 +50,11 @@ data class BookEntity(
     val purchasePrice: Double? = null,
     val condition: ItemCondition? = null,
     val synopsis: String? = null,
-    val notes: String? = null
+    val notes: String? = null,
+    
+    // Additional fields for API integration
+    val description: String? = null,
+    val coverImageUrl: String? = null,
+    val rating: Float? = null, // User rating 0.0-5.0
+    val readStatus: com.monomori.data.model.ReadStatus? = null
 )

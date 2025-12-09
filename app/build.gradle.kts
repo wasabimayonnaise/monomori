@@ -51,6 +51,21 @@ android {
         buildConfig = true
     }
 
+    // Read API keys from local.properties
+    val localProperties = org.jetbrains.kotlin.konan.properties.Properties()
+    val localPropertiesFile = rootProject.file("local.properties")
+    if (localPropertiesFile.exists()) {
+        localPropertiesFile.inputStream().use { localProperties.load(it) }
+    }
+
+    defaultConfig {
+        // API Keys from local.properties (with defaults for CI/CD)
+        buildConfigField("String", "GOOGLE_BOOKS_API_KEY", "\"${localProperties.getProperty("GOOGLE_BOOKS_API_KEY", "")}\"")
+        buildConfigField("String", "TMDB_API_KEY", "\"${localProperties.getProperty("TMDB_API_KEY", "")}\"")
+        buildConfigField("String", "DISCOGS_API_KEY", "\"${localProperties.getProperty("DISCOGS_API_KEY", "")}\"")
+        buildConfigField("String", "DISCOGS_API_SECRET", "\"${localProperties.getProperty("DISCOGS_API_SECRET", "")}\"")
+    }
+
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.4"
     }
@@ -98,6 +113,21 @@ dependencies {
 
     // DataStore for preferences
     implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+    // Networking
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+
+    // Barcode Scanning
+    implementation("com.google.mlkit:barcode-scanning:17.2.0")
+    
+    // CameraX for barcode scanning
+    val cameraxVersion = "1.3.1"
+    implementation("androidx.camera:camera-camera2:$cameraxVersion")
+    implementation("androidx.camera:camera-lifecycle:$cameraxVersion")
+    implementation("androidx.camera:camera-view:$cameraxVersion")
 
     // Testing
     testImplementation("junit:junit:4.13.2")

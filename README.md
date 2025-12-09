@@ -16,8 +16,9 @@
 ## ✨ Features
 
 ### Current Features (v1.0.0)
-- 📚 **10 Collection Categories** with specialized fields
+- 📚 **10+ Collection Categories** with specialized fields
   - Books (Fiction, Non-Fiction, Manga, Art Books, Comics, Graphic Novels)
+  - Comics (Specialized entity for comic book collectors)
   - Figures & Statues (Scale Figures, Nendoroids, Prize Figures, Figma, Funko Pop)
   - Music (Vinyl Records, CDs, Cassettes)
   - Movies & TV (DVD, Blu-ray, 4K UHD, VHS)
@@ -28,18 +29,39 @@
   - Art & Prints (Posters, Limited Editions, Original Art, Doujinshi)
   - Custom (fully user-defined categories)
 
-- 🎨 **Beautiful Theming System**
-  - Dark mode (default)
+- 🔍 **API Integrations for Auto-Fill**
+  - Google Books API for book metadata (title, author, ISBN, cover, description)
+  - TMDB API for movies & TV shows (cast, director, posters, ratings)
+  - Discogs API for music/vinyl (artist, album, tracklist, cover art)
+  - Barcode scanning support (ISBN, UPC)
+
+- 📸 **Barcode Scanning**
+  - ML Kit integration for fast barcode detection
+  - Support for ISBN (books), UPC (music, movies, games)
+  - Automatic API search from scanned barcodes
+  - Camera permission handling
+
+- 🎨 **Beautiful Material 3 Expressive Theming**
+  - Dark mode (default) with vibrant, expressive colors
   - Light mode
   - System default
   - 5 curated color themes: Monomori Default, Sakura, Matcha, Ocean, Sunset
   - Material You dynamic color support (Android 12+)
+  - Playful, rounded shapes
+  - Smooth spring animations and transitions
+
+- 📋 **Dual View Modes**
+  - Card View: Beautiful cards with cover images
+  - Spreadsheet View: Compact table-like rows for quick scanning
+  - Per-category view preference persistence
+  - Easy toggle in toolbar
 
 - 🏗️ **Robust Architecture**
   - MVVM (Model-View-ViewModel) pattern
   - Room database for local storage
   - Hilt dependency injection
   - Jetpack Compose UI with Material 3
+  - Repository pattern with offline-first approach
 
 - 🌸 **Japanese-Inspired Design**
   - Clean whitespace (Ma - 間)
@@ -47,9 +69,8 @@
   - Typography optimized for both English and Japanese
 
 ### Planned Features
-- 🔍 Advanced search and filtering
+- 🔍 Advanced search and filtering across all collections
 - 📊 Statistics and collection analytics
-- 📸 Barcode scanning for easy item entry
 - 🌐 Cloud backup and sync
 - 📤 Export/Import (JSON, CSV)
 - 🏷️ Custom tags and labels
@@ -90,13 +111,17 @@ Plus a **Custom** category where you can define your own fields for any collecti
 ### Key Libraries
 - **AndroidX Core KTX** - Kotlin extensions for Android
 - **Jetpack Compose** - Modern declarative UI
-- **Material 3** - Latest Material Design components
+- **Material 3** - Latest Material Design components with expressive theming
 - **Room** - Local database with type-safe SQL
 - **Hilt** - Dependency injection
 - **Navigation Compose** - Type-safe navigation
 - **Coil** - Image loading
 - **DataStore** - Preferences storage
 - **Gson** - JSON serialization for custom fields
+- **Retrofit** - REST API client for external integrations
+- **OkHttp** - HTTP client with interceptors
+- **ML Kit** - Barcode scanning with Google ML Kit
+- **CameraX** - Modern camera API for barcode scanning
 
 ## 📁 Project Structure
 
@@ -106,19 +131,24 @@ com.monomori/
 │   ├── local/
 │   │   ├── dao/              # Data Access Objects
 │   │   ├── database/         # Room database
-│   │   └── entity/           # Database entities (10 collection types)
-│   ├── repository/           # Repository pattern
+│   │   └── entity/           # Database entities (11 collection types)
+│   ├── remote/
+│   │   ├── api/              # API interfaces (Google Books, TMDB, Discogs)
+│   │   ├── dto/              # Data transfer objects
+│   │   └── RetrofitClient.kt # HTTP client configuration
+│   ├── repository/           # Repository pattern with API integration
+│   ├── preferences/          # DataStore preferences
 │   └── model/                # Domain models and enums
 ├── di/                       # Hilt dependency injection modules
 ├── ui/
-│   ├── theme/               # Material 3 theming (5 color schemes)
+│   ├── theme/               # Material 3 Expressive theming (5+ color schemes)
 │   ├── navigation/          # Navigation graph
 │   ├── screens/             # Screen composables
 │   │   ├── home/
 │   │   ├── collection/
-│   │   ├── item/
+│   │   ├── additem/
 │   │   └── settings/
-│   └── components/          # Reusable UI components
+│   └── components/          # Reusable UI components (cards, lists, scanner)
 ├── util/                    # Utility classes
 └── MonomoriApplication.kt   # Application class
 ```
@@ -129,6 +159,7 @@ com.monomori/
 - Android Studio Hedgehog (2023.1.1) or later
 - JDK 17 or later
 - Android SDK with minimum API 26
+- (Optional) API keys for auto-fill features (see [API Setup Guide](API_SETUP.md))
 
 ### Building the Project
 
@@ -138,11 +169,23 @@ com.monomori/
    cd monomori
    ```
 
-2. **Open in Android Studio**
+2. **(Optional) Set up API keys**
+   
+   For auto-fill features with Google Books, TMDB, and Discogs APIs:
+   ```bash
+   cp local.properties.example local.properties
+   # Edit local.properties and add your API keys
+   ```
+   
+   See [API_SETUP.md](API_SETUP.md) for detailed instructions on obtaining free API keys.
+   
+   **Note:** The app works without API keys, but you'll need to manually enter all item details.
+
+3. **Open in Android Studio**
    - File → Open → Select the `monomori` directory
    - Wait for Gradle sync to complete
 
-3. **Run the app**
+4. **Run the app**
    - Connect an Android device or start an emulator (API 26+)
    - Click Run (▶️) or press `Shift + F10`
 

@@ -47,5 +47,14 @@ data class MusicEntity(
     val sleeveCondition: ItemCondition? = null,
     val discogsUrl: String? = null,
     val tracklist: List<String> = emptyList(),
-    val notes: String? = null
+    val notes: String? = null,
+    
+    // Additional fields for API integration
+    val coverImageUrl: String? = null,
+    val year: Int? = null,
+    val genres: List<String> = emptyList(),
+    val rating: Float? = null, // User rating 0.0-5.0
+    val listenStatus: com.monomori.data.model.ListenStatus? = null,
+    val trackCount: Int? = null,
+    val discogsId: Int? = null
 )

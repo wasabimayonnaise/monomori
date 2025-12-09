@@ -25,9 +25,10 @@ import com.monomori.data.local.entity.*
         ModelKitEntity::class,
         MagazineEntity::class,
         ArtPrintEntity::class,
-        CustomItemEntity::class
+        CustomItemEntity::class,
+        ComicEntity::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = true
 )
 @TypeConverters(Converters::class)
@@ -44,6 +45,7 @@ abstract class MonomoriDatabase : RoomDatabase() {
     abstract fun magazineDao(): MagazineDao
     abstract fun artPrintDao(): ArtPrintDao
     abstract fun customItemDao(): CustomItemDao
+    abstract fun comicDao(): ComicDao
     
     companion object {
         const val DATABASE_NAME = "monomori_database"

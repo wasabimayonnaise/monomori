@@ -3,7 +3,22 @@ package com.monomori.data.local.database
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.monomori.data.model.*
+import com.monomori.data.model.ArtSubcategory
+import com.monomori.data.model.BookSubcategory
+import com.monomori.data.model.BuildStatus
+import com.monomori.data.model.CardSubcategory
+import com.monomori.data.model.CollectionCategory
+import com.monomori.data.model.CustomFieldsData
+import com.monomori.data.model.FigureSubcategory
+import com.monomori.data.model.GameSubcategory
+import com.monomori.data.model.ItemCondition
+import com.monomori.data.model.ListenStatus
+import com.monomori.data.model.ModelSubcategory
+import com.monomori.data.model.MovieSubcategory
+import com.monomori.data.model.MusicSubcategory
+import com.monomori.data.model.PlayStatus
+import com.monomori.data.model.ReadStatus
+import com.monomori.data.model.WatchStatus
 import java.util.Date
 
 /**
@@ -234,6 +249,74 @@ class Converters {
         return value?.let {
             try {
                 BuildStatus.valueOf(it)
+            } catch (e: IllegalArgumentException) {
+                null
+            }
+        }
+    }
+    
+    // ReadStatus converters
+    @TypeConverter
+    fun fromReadStatus(value: ReadStatus?): String? {
+        return value?.name
+    }
+    
+    @TypeConverter
+    fun toReadStatus(value: String?): ReadStatus? {
+        return value?.let {
+            try {
+                ReadStatus.valueOf(it)
+            } catch (e: IllegalArgumentException) {
+                null
+            }
+        }
+    }
+    
+    // WatchStatus converters
+    @TypeConverter
+    fun fromWatchStatus(value: WatchStatus?): String? {
+        return value?.name
+    }
+    
+    @TypeConverter
+    fun toWatchStatus(value: String?): WatchStatus? {
+        return value?.let {
+            try {
+                WatchStatus.valueOf(it)
+            } catch (e: IllegalArgumentException) {
+                null
+            }
+        }
+    }
+    
+    // ListenStatus converters
+    @TypeConverter
+    fun fromListenStatus(value: ListenStatus?): String? {
+        return value?.name
+    }
+    
+    @TypeConverter
+    fun toListenStatus(value: String?): ListenStatus? {
+        return value?.let {
+            try {
+                ListenStatus.valueOf(it)
+            } catch (e: IllegalArgumentException) {
+                null
+            }
+        }
+    }
+    
+    // PlayStatus converters
+    @TypeConverter
+    fun fromPlayStatus(value: PlayStatus?): String? {
+        return value?.name
+    }
+    
+    @TypeConverter
+    fun toPlayStatus(value: String?): PlayStatus? {
+        return value?.let {
+            try {
+                PlayStatus.valueOf(it)
             } catch (e: IllegalArgumentException) {
                 null
             }
