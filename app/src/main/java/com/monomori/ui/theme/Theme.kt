@@ -261,6 +261,7 @@ fun MonomoriTheme(
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
+        shapes = MonomoriShapes,
         content = content
     )
 }

@@ -2,53 +2,53 @@ package com.monomori.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Monomori Default Theme - Sophisticated dark with indigo accents
+// Monomori Default Theme - Vibrant expressive indigo with purple accents
 object MonomoriDefaultColors {
-    val Primary = Color(0xFF7C4DFF)
+    val Primary = Color(0xFF9C4DFF) // More vibrant purple
     val OnPrimary = Color(0xFFFFFFFF)
-    val PrimaryContainer = Color(0xFF4527A0)
-    val OnPrimaryContainer = Color(0xFFE1BEE7)
+    val PrimaryContainer = Color(0xFF6200EA) // Brighter container
+    val OnPrimaryContainer = Color(0xFFEDE7F6)
     
-    val Secondary = Color(0xFF7C4DFF)
+    val Secondary = Color(0xFFFF6E40) // Vibrant coral accent
     val OnSecondary = Color(0xFFFFFFFF)
-    val SecondaryContainer = Color(0xFF512DA8)
-    val OnSecondaryContainer = Color(0xFFD1C4E9)
+    val SecondaryContainer = Color(0xFFFF3D00)
+    val OnSecondaryContainer = Color(0xFFFBE9E7)
     
-    val Tertiary = Color(0xFFB39DDB)
-    val OnTertiary = Color(0xFF311B92)
-    val TertiaryContainer = Color(0xFF5E35B1)
-    val OnTertiaryContainer = Color(0xFFEDE7F6)
+    val Tertiary = Color(0xFF00E5FF) // Bright cyan
+    val OnTertiary = Color(0xFF003D4D)
+    val TertiaryContainer = Color(0xFF00B8D4)
+    val OnTertiaryContainer = Color(0xFFE0F7FA)
     
-    val Background = Color(0xFF121212)
-    val OnBackground = Color(0xFFE1E1E1)
-    val Surface = Color(0xFF1E1E1E)
-    val OnSurface = Color(0xFFE1E1E1)
-    val SurfaceVariant = Color(0xFF2C2C2C)
-    val OnSurfaceVariant = Color(0xFFCAC4D0)
+    val Background = Color(0xFF0F0A1F) // Rich dark background
+    val OnBackground = Color(0xFFF3EDF7)
+    val Surface = Color(0xFF1A1226)
+    val OnSurface = Color(0xFFF3EDF7)
+    val SurfaceVariant = Color(0xFF2A1F3D)
+    val OnSurfaceVariant = Color(0xFFD0BCFF)
 }
 
-// Sakura Theme - Soft pinks inspired by cherry blossoms
+// Sakura Theme - Vibrant pinks inspired by cherry blossoms  
 object SakuraColors {
-    val Primary = Color(0xFFFF80AB)
-    val OnPrimary = Color(0xFF880E4F)
-    val PrimaryContainer = Color(0xFFC2185B)
+    val Primary = Color(0xFFFF4081) // Brighter pink
+    val OnPrimary = Color(0xFFFFFFFF)
+    val PrimaryContainer = Color(0xFFC51162)
     val OnPrimaryContainer = Color(0xFFFCE4EC)
     
-    val Secondary = Color(0xFFF48FB1)
+    val Secondary = Color(0xFFFF80AB) // Vibrant light pink
     val OnSecondary = Color(0xFF880E4F)
     val SecondaryContainer = Color(0xFFAD1457)
     val OnSecondaryContainer = Color(0xFFF8BBD0)
     
-    val Tertiary = Color(0xFFFFCCBC)
-    val OnTertiary = Color(0xFFBF360C)
-    val TertiaryContainer = Color(0xFFD84315)
-    val OnTertiaryContainer = Color(0xFFFBE9E7)
+    val Tertiary = Color(0xFFFFAB40) // Peachy accent
+    val OnTertiary = Color(0xFF3E2723)
+    val TertiaryContainer = Color(0xFFFF6F00)
+    val OnTertiaryContainer = Color(0xFFFFF3E0)
     
-    val Background = Color(0xFFFFF0F3)
+    val Background = Color(0xFFFFF0F5) // Warmer pink background
     val OnBackground = Color(0xFF2C1518)
     val Surface = Color(0xFFFFFFFF)
     val OnSurface = Color(0xFF2C1518)
-    val SurfaceVariant = Color(0xFFFCE4EC)
+    val SurfaceVariant = Color(0xFFFFE4E1)
     val OnSurfaceVariant = Color(0xFF4A1D24)
 }
 
