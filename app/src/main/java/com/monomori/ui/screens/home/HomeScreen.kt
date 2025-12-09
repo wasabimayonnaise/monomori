@@ -106,10 +106,11 @@ fun HomeScreen(
             ) {
                 items(getCategoryItems()) { item ->
                     CategoryCard(
-                        icon = item.icon,
-                        title = item.title,
+                        icon = item. icon,
+                        title = item. category.name. replace("_", " ").lowercase()
+                            .replaceFirstChar { it.uppercase() },
                         count = 0,
-                        onClick = { onNavigateToCategory(item.category.name) }
+                        onClick = { onNavigateToCategory(item.category. name) }
                     )
                 }
             }
@@ -161,60 +162,18 @@ fun CategoryCard(
 
 data class CategoryItem(
     val category: CollectionCategory,
-    val title: String,
     val icon: ImageVector
 )
 
-@Composable
 fun getCategoryItems(): List<CategoryItem> = listOf(
-    CategoryItem(
-        CollectionCategory.BOOKS,
-        stringResource(R.string.category_books),
-        Icons.Default.MenuBook
-    ),
-    CategoryItem(
-        CollectionCategory.FIGURES,
-        stringResource(R.string.category_figures),
-        Icons.Default.Interests
-    ),
-    CategoryItem(
-        CollectionCategory.MUSIC,
-        stringResource(R.string.category_music),
-        Icons.Default.Album
-    ),
-    CategoryItem(
-        CollectionCategory.MOVIES_TV,
-        stringResource(R.string.category_movies),
-        Icons.Default.Movie
-    ),
-    CategoryItem(
-        CollectionCategory.VIDEO_GAMES,
-        stringResource(R.string.category_games),
-        Icons.Default.SportsEsports
-    ),
-    CategoryItem(
-        CollectionCategory.TRADING_CARDS,
-        stringResource(R.string.category_cards),
-        Icons.Default.Style
-    ),
-    CategoryItem(
-        CollectionCategory.MODEL_KITS,
-        stringResource(R.string.category_models),
-        Icons.Default.Handyman
-    ),
-    CategoryItem(
-        CollectionCategory.MAGAZINES,
-        stringResource(R.string.category_magazines),
-        Icons.Default.LibraryBooks
-    ),
-    CategoryItem(
-        CollectionCategory.ART_PRINTS,
-        stringResource(R.string.category_art),
-        Icons.Default.Palette
-    ),
-    CategoryItem(
-        CollectionCategory.CUSTOM,
-        stringResource(R.string.category_custom),
-        Icons.Default.AddBox
-    )
+    CategoryItem(CollectionCategory.BOOKS, Icons.Default.Home),
+    CategoryItem(CollectionCategory.FIGURES, Icons.Default.Star),
+    CategoryItem(CollectionCategory.MUSIC, Icons.Default.PlayArrow),
+    CategoryItem(CollectionCategory.MOVIES_TV, Icons.Default.Favorite),
+    CategoryItem(CollectionCategory.VIDEO_GAMES, Icons.Default.Star),
+    CategoryItem(CollectionCategory.TRADING_CARDS, Icons.Default.Favorite),
+    CategoryItem(CollectionCategory.MODEL_KITS, Icons.Default.Build),
+    CategoryItem(CollectionCategory.MAGAZINES, Icons.Default.List),
+    CategoryItem(CollectionCategory.ART_PRINTS, Icons.Default.Create),
+    CategoryItem(CollectionCategory.CUSTOM, Icons.Default.Add)
 )
