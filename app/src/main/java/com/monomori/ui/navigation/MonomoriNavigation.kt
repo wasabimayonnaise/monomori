@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.monomori.ui.screens.home.HomeScreen
 import com.monomori.ui.screens.settings.SettingsScreen
 import com.monomori.ui.screens.collection.CollectionScreen
+import com.monomori.ui.screens.additem.AddItemScreen
 
 /**
  * Main navigation graph for Monomori
@@ -46,7 +47,20 @@ fun MonomoriNavigation(
                     navController.popBackStack()
                 },
                 onAddItem = {
-                    // Add item functionality coming soon
+                    navController.navigate(Screen.AddItem.createRoute(category))
+                }
+            )
+        }
+        composable(Screen.AddItem. route) { backStackEntry ->
+            val category = backStackEntry.arguments?.getString("category") ?: "Unknown"
+            AddItemScreen(
+                category = category,
+                onNavigateBack = {
+                    navController.popBackStack()
+                },
+                onSaveItem = { name, notes ->
+                    // For now just go back - we'll save to database later!
+                    navController.popBackStack()
                 }
             )
         }
