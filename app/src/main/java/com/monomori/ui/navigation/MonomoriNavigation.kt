@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.monomori.ui.screens.home.HomeScreen
 import com.monomori.ui.screens.settings.SettingsScreen
+import com.monomori.ui.screens.collection.CollectionScreen
 
 /**
  * Main navigation graph for Monomori
@@ -37,11 +38,17 @@ fun MonomoriNavigation(
                 }
             )
         }
-        
-        // TODO: Add more navigation destinations as features are implemented
-        // - Collection list screen
-        // - Item detail screen
-        // - Add/Edit item screen
-        // - Search screen
+        composable(Screen.Collections.route) { backStackEntry ->
+            val category = backStackEntry.arguments?.getString("category") ?: "Unknown"
+            CollectionScreen(
+                category = category,
+                onNavigateBack = {
+                    navController.popBackStack()
+                },
+                onAddItem = {
+                    // Add item functionality coming soon
+                }
+            )
+        }
     }
 }
