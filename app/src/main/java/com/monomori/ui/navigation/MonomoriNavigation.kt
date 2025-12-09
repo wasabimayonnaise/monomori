@@ -1,0 +1,47 @@
+package com.monomori.ui.navigation
+
+import androidx.compose.runtime.Composable
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.monomori.ui.screens.home.HomeScreen
+import com.monomori.ui.screens.settings.SettingsScreen
+
+/**
+ * Main navigation graph for Monomori
+ */
+@Composable
+fun MonomoriNavigation(
+    navController: NavHostController = rememberNavController()
+) {
+    NavHost(
+        navController = navController,
+        startDestination = Screen.Home.route
+    ) {
+        composable(Screen.Home.route) {
+            HomeScreen(
+                onNavigateToSettings = {
+                    navController.navigate(Screen.Settings.route)
+                },
+                onNavigateToCategory = { category ->
+                    navController.navigate(Screen.Collections.createRoute(category))
+                }
+            )
+        }
+        
+        composable(Screen.Settings.route) {
+            SettingsScreen(
+                onNavigateBack = {
+                    navController.popBackStack()
+                }
+            )
+        }
+        
+        // TODO: Add more navigation destinations as features are implemented
+        // - Collection list screen
+        // - Item detail screen
+        // - Add/Edit item screen
+        // - Search screen
+    }
+}
