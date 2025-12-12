@@ -77,7 +77,7 @@ fun CardItemView(
                 } else {
                     // Placeholder when no image
                     Icon(
-                        imageVector = Icons.Default.BrokenImage,
+                        imageVector = Icons.Filled.BrokenImage,
                         contentDescription = "No image",
                         modifier = Modifier
                             .align(Alignment.Center)
