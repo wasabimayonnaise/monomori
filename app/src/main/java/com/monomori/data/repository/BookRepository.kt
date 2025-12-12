@@ -18,22 +18,22 @@ class BookRepository @Inject constructor(
     private val bookDao: BookDao,
     private val googleBooksApi: GoogleBooksApi
 ) {
-    
+
     // Local database operations
     fun getAllBooks(): Flow<List<BookEntity>> = bookDao.getAllBooks()
-    
-    suspend fun getBookById(id: String): BookEntity? = bookDao.getBookById(id)
-    
+
+    fun getBookById(id: Long): Flow<BookEntity?> = bookDao.getBookById(id)
+
     fun searchBooks(query: String): Flow<List<BookEntity>> = bookDao.searchBooks(query)
-    
+
     suspend fun insertBook(book: BookEntity) = bookDao.insertBook(book)
-    
+
     suspend fun updateBook(book: BookEntity) = bookDao.updateBook(book)
-    
+
     suspend fun deleteBook(book: BookEntity) = bookDao.deleteBook(book)
-    
-    suspend fun getBooksCount(): Int = bookDao.getBooksCount()
-    
+
+    fun getBooksCount(): Flow<Int> = bookDao.getBookCount()
+
     // API operations
     /**
      * Search for books using Google Books API
@@ -58,7 +58,7 @@ class BookRepository @Inject constructor(
             emptyList()
         }
     }
-    
+
     /**
      * Search for books by ISBN using Google Books API
      * @param isbn ISBN-10 or ISBN-13
@@ -80,7 +80,7 @@ class BookRepository @Inject constructor(
             emptyList()
         }
     }
-    
+
     /**
      * Convert BookVolume from API to BookEntity for local storage
      */
@@ -88,15 +88,15 @@ class BookRepository @Inject constructor(
         val volumeInfo = volume.volumeInfo
         val isbn13 = volumeInfo.industryIdentifiers?.firstOrNull { it.type == "ISBN_13" }?.identifier
         val isbn10 = volumeInfo.industryIdentifiers?.firstOrNull { it.type == "ISBN_10" }?.identifier
-        
+
         // Get best quality image URL
         val coverImageUrl = volumeInfo.imageLinks?.let { images ->
-            images.large 
-                ?: images.medium 
-                ?: images.small 
+            images.large
+                ?: images.medium
+                ?: images.small
                 ?: images.thumbnail?.replace("http://", "https://")
         }
-        
+
         return BookEntity(
             title = volumeInfo.title,
             authors = volumeInfo.authors ?: emptyList(),

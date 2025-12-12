@@ -17,19 +17,19 @@ class VideoGameRepository @Inject constructor(
 ) {
     
     fun getAllVideoGames(): Flow<List<VideoGameEntity>> = videoGameDao.getAllVideoGames()
-    
-    suspend fun getVideoGameById(id: String): VideoGameEntity? = videoGameDao.getVideoGameById(id)
+
+    fun getVideoGameById(id: String): Flow<VideoGameEntity?> = videoGameDao.getVideoGameById(id)
     
     fun searchVideoGames(query: String): Flow<List<VideoGameEntity>> = videoGameDao.searchVideoGames(query)
     
-    fun getVideoGamesByPlatform(platform: String): Flow<List<VideoGameEntity>> = 
-        videoGameDao.getVideoGamesByPlatform(platform)
+    //fun getVideoGamesByPlatform(platform: String): Flow<List<VideoGameEntity>> =
+    //    videoGameDao.getVideoGamesByPlatform(platform)
     
     suspend fun insertVideoGame(game: VideoGameEntity) = videoGameDao.insertVideoGame(game)
     
     suspend fun updateVideoGame(game: VideoGameEntity) = videoGameDao.updateVideoGame(game)
     
     suspend fun deleteVideoGame(game: VideoGameEntity) = videoGameDao.deleteVideoGame(game)
-    
-    suspend fun getVideoGamesCount(): Int = videoGameDao.getVideoGamesCount()
+
+    fun getVideoGamesCount(): Flow<Int> = videoGameDao.getVideoGameCount()
 }

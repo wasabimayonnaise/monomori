@@ -22,8 +22,8 @@ class MovieRepository @Inject constructor(
     
     // Local database operations
     fun getAllMovies(): Flow<List<MovieEntity>> = movieDao.getAllMovies()
-    
-    suspend fun getMovieById(id: String): MovieEntity? = movieDao.getMovieById(id)
+
+    fun getMovieById(id: String): Flow<MovieEntity?> = movieDao.getMovieById(id)
     
     fun searchMovies(query: String): Flow<List<MovieEntity>> = movieDao.searchMovies(query)
     
@@ -32,8 +32,8 @@ class MovieRepository @Inject constructor(
     suspend fun updateMovie(movie: MovieEntity) = movieDao.updateMovie(movie)
     
     suspend fun deleteMovie(movie: MovieEntity) = movieDao.deleteMovie(movie)
-    
-    suspend fun getMoviesCount(): Int = movieDao.getMoviesCount()
+
+    fun getMoviesCount(): Flow<Int> = movieDao.getMovieCount()
     
     // API operations
     /**

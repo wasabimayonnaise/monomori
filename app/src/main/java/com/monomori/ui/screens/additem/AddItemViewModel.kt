@@ -18,7 +18,14 @@ class AddItemViewModel @Inject constructor(
         author: String,
         pageCount: Int?,
         genre: String,
-        releaseDate: String
+        releaseDate: String,
+        publisher: String? = null,
+        isbn: String? = null,
+        series: String? = null,
+        volumeNumber: Int? = null,
+        language: String? = null,
+        notes: String? = null,
+        primaryImage: String? = null
     ) {
         viewModelScope.launch {
             val book = BookEntity(
@@ -26,9 +33,16 @@ class AddItemViewModel @Inject constructor(
                 authors = if (author.isNotBlank()) listOf(author) else emptyList(),
                 pageCount = pageCount,
                 genre = genre.ifBlank { null },
-                notes = releaseDate.ifBlank { null }  // We'll fix this properly later!
+                releaseDate = null, // TODO: parse releaseDate string to Date if you want, or leave as null for now
+                publisher = publisher?.ifBlank { null },
+                isbn = isbn?.ifBlank { null },
+                series = series?.ifBlank { null },
+                volumeNumber = volumeNumber,
+                language = language?.ifBlank { null },
+                notes = notes?.ifBlank { null },
+                primaryImage = primaryImage
             )
-            bookDao. insertBook(book)
+            bookDao.insertBook(book)
         }
     }
 }

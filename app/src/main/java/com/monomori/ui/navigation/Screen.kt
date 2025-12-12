@@ -9,7 +9,7 @@ sealed class Screen(val route: String) {
         fun createRoute(category: String) = "collections/$category"
     }
     object ItemDetail : Screen("item/{itemId}") {
-        fun createRoute(itemId: String) = "item/$itemId"
+        fun createRoute(itemId: Long) = "item/$itemId"
     }
     object AddItem : Screen("add_item/{category}") {
         fun createRoute(category: String) = "add_item/$category"

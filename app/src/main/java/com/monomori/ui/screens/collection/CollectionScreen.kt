@@ -1,38 +1,43 @@
 package com.monomori.ui.screens.collection
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled. Add
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose. material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.*
+import androidx.compose.material3.rememberSwipeToDismissBoxState
+import androidx.compose.material3.SwipeToDismissBox
+import androidx.compose.material3.SwipeToDismissBoxValue
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.monomori.data.local.entity.BookEntity
-import androidx.compose.material3.rememberSwipeToDismissBoxState
-import androidx.compose.material3.SwipeToDismissBox
-import androidx.compose.material3.SwipeToDismissBoxValue
 
 /**
  * Collection Screen - Shows items in a specific category
  */
-@OptIn(ExperimentalMaterial3Api:: class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CollectionScreen(
-    category:  String,
+    category: String,
     onNavigateBack: () -> Unit,
     onAddItem: () -> Unit,
+    onBookClick: (Long) -> Unit,
     viewModel: CollectionViewModel = hiltViewModel()
 ) {
-    val displayName = category.lowercase().replace("_", " ").split(" ").joinToString(" ") { it.replaceFirstChar { char -> char.uppercase() } }
+    val displayName = category.lowercase()
+        .replace("_", " ")
+        .split(" ")
+        .joinToString(" ") { it.replaceFirstChar { char -> char.uppercase() } }
     val books by viewModel.books.collectAsState(initial = emptyList())
 
     // Track which book user wants to delete
@@ -43,7 +48,7 @@ fun CollectionScreen(
         AlertDialog(
             onDismissRequest = { bookToDelete = null },
             title = { Text("Delete Book? ") },
-            text = { Text("Are you sure you want to delete \"${bookToDelete!! .title}\"?") },
+            text = { Text("Are you sure you want to delete \"${bookToDelete!!.title}\"?") },
             confirmButton = {
                 TextButton(
                     onClick = {
@@ -127,7 +132,8 @@ fun CollectionScreen(
                 ) { book ->
                     SwipeToDeleteBookItem(
                         book = book,
-                        onDelete = { bookToDelete = book }
+                        onDelete = { bookToDelete = book },
+                        onClick = { onBookClick(book.id) }
                     )
                 }
             }
@@ -139,7 +145,8 @@ fun CollectionScreen(
 @Composable
 fun SwipeToDeleteBookItem(
     book: BookEntity,
-    onDelete: () -> Unit
+    onDelete: () -> Unit,
+    onClick: () -> Unit
 ) {
     val dismissState = rememberSwipeToDismissBoxState(
         confirmValueChange = { dismissValue ->
@@ -174,7 +181,7 @@ fun SwipeToDeleteBookItem(
             }
         },
         content = {
-            BookItem(book = book)
+            BookItem(book = book, onClick = onClick)
         },
         enableDismissFromStartToEnd = false,
         enableDismissFromEndToStart = true
@@ -182,9 +189,11 @@ fun SwipeToDeleteBookItem(
 }
 
 @Composable
-fun BookItem(book: BookEntity) {
+fun BookItem(book: BookEntity, onClick: () -> Unit) {
     Card(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onClick() }
     ) {
         Column(
             modifier = Modifier

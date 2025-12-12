@@ -5,9 +5,12 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
 import com.monomori.ui.screens.home.HomeScreen
 import com.monomori.ui.screens.settings.SettingsScreen
 import com.monomori.ui.screens.collection.CollectionScreen
+import com.monomori.ui.screens.collection.BookDetailScreen
 import com.monomori.ui.screens.additem.AddItemScreen
 
 /**
@@ -31,7 +34,7 @@ fun MonomoriNavigation(
                 }
             )
         }
-        
+
         composable(Screen.Settings.route) {
             SettingsScreen(
                 onNavigateBack = {
@@ -39,19 +42,20 @@ fun MonomoriNavigation(
                 }
             )
         }
+
         composable(Screen.Collections.route) { backStackEntry ->
             val category = backStackEntry.arguments?.getString("category") ?: "Unknown"
             CollectionScreen(
                 category = category,
-                onNavigateBack = {
-                    navController.popBackStack()
-                },
-                onAddItem = {
-                    navController.navigate(Screen.AddItem.createRoute(category))
+                onNavigateBack = { navController.popBackStack() },
+                onAddItem = { navController.navigate(Screen.AddItem.createRoute(category)) },
+                onBookClick = { bookId ->
+                    navController.navigate(Screen.ItemDetail.createRoute(bookId))
                 }
             )
         }
-        composable(Screen.AddItem. route) { backStackEntry ->
+
+        composable(Screen.AddItem.route) { backStackEntry ->
             val category = backStackEntry.arguments?.getString("category") ?: "Unknown"
             AddItemScreen(
                 category = category,
@@ -64,5 +68,21 @@ fun MonomoriNavigation(
                 }
             )
         }
+
+        // ********* THIS IS THE NEW ROUTE FOR ITEM DETAIL *********
+        composable(
+            route = Screen.ItemDetail.route,
+            arguments = listOf(navArgument("itemId") { type = NavType.LongType })
+        ) { backStackEntry ->
+            val itemId = backStackEntry.arguments?.getLong("itemId")
+            if (itemId == null) return@composable // Prevent navigation if ID is missing
+
+            BookDetailScreen(
+                itemId = itemId,
+                onNavigateBack = { navController.popBackStack() },
+                onEdit = { /* implement edit as needed */ }
+            )
+        }
+        // **********************************************************
     }
 }

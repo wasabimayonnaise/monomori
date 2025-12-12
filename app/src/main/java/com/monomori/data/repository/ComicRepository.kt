@@ -17,8 +17,8 @@ class ComicRepository @Inject constructor(
 ) {
     
     fun getAllComics(): Flow<List<ComicEntity>> = comicDao.getAllComics()
-    
-    suspend fun getComicById(id: String): ComicEntity? = comicDao.getComicById(id)
+
+    suspend fun getComicById(id:  String): ComicEntity? = comicDao.getComicById(id)
     
     fun getComicsBySeries(series: String): Flow<List<ComicEntity>> = 
         comicDao.getComicsBySeries(series)
@@ -35,6 +35,6 @@ class ComicRepository @Inject constructor(
     suspend fun updateComic(comic: ComicEntity) = comicDao.updateComic(comic)
     
     suspend fun deleteComic(comic: ComicEntity) = comicDao.deleteComic(comic)
-    
+
     suspend fun getComicsCount(): Int = comicDao.getComicsCount()
 }

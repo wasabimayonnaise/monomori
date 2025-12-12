@@ -22,8 +22,8 @@ class MusicRepository @Inject constructor(
     
     // Local database operations
     fun getAllMusic(): Flow<List<MusicEntity>> = musicDao.getAllMusic()
-    
-    suspend fun getMusicById(id: String): MusicEntity? = musicDao.getMusicById(id)
+
+    fun getMusicById(id:  String): Flow<MusicEntity?> = musicDao.getMusicById(id)
     
     fun searchMusic(query: String): Flow<List<MusicEntity>> = musicDao.searchMusic(query)
     
@@ -32,8 +32,8 @@ class MusicRepository @Inject constructor(
     suspend fun updateMusic(music: MusicEntity) = musicDao.updateMusic(music)
     
     suspend fun deleteMusic(music: MusicEntity) = musicDao.deleteMusic(music)
-    
-    suspend fun getMusicCount(): Int = musicDao.getMusicCount()
+
+    fun getMusicCount(): Flow<Int> = musicDao.getMusicCount()
     
     // API operations
     /**

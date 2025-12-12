@@ -20,7 +20,7 @@ import java.util.UUID
 @TypeConverters(Converters::class)
 data class BookEntity(
     @PrimaryKey
-    val id: String = UUID.randomUUID().toString(),
+    val id: Long = 0L,
     
     // Base fields
     val category: CollectionCategory = CollectionCategory.BOOKS,
