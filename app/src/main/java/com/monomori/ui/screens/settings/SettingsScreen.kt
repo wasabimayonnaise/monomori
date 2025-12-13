@@ -7,7 +7,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -43,7 +43,7 @@ fun SettingsScreen(
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
                         Icon(
-                            imageVector = Icons.Default.ArrowBack,
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = "Back",
                             tint = NeonPink
                         )
@@ -74,7 +74,7 @@ fun SettingsScreen(
                     subtitle = getThemeModeLabel(selectedThemeMode),
                     onClick = { /* TODO: Show dialog to select theme mode */ }
                 )
-                Divider(modifier = Modifier.padding(vertical = 4.dp))
+                HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
                 SettingsItem(
                     title = stringResource(R.string.settings_color_theme),
                     subtitle = getColorThemeLabel(selectedColorTheme),
@@ -90,13 +90,13 @@ fun SettingsScreen(
                     subtitle = "Backup and restore your collection",
                     onClick = { /* TODO: Implement backup */ }
                 )
-                Divider(modifier = Modifier.padding(vertical = 4.dp))
+                HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
                 SettingsItem(
                     title = stringResource(R.string.settings_export),
                     subtitle = "Export data as JSON or CSV",
                     onClick = { /* TODO: Implement export */ }
                 )
-                Divider(modifier = Modifier.padding(vertical = 4.dp))
+                HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
                 SettingsItem(
                     title = stringResource(R.string.settings_import),
                     subtitle = "Import data from file",
@@ -112,7 +112,7 @@ fun SettingsScreen(
                     subtitle = "Version ${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})",
                     onClick = { }
                 )
-                Divider(modifier = Modifier.padding(vertical = 4.dp))
+                HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
                 SettingsItem(
                     title = "物守り - Guardian of Things",
                     subtitle = "A universal collection management app",
