@@ -130,3 +130,9 @@ object SunsetColors {
 // Common colors used across themes
 val ErrorColor = Color(0xFFCF6679)
 val OnErrorColor = Color(0xFF000000)
+
+// Neon colors
+val NeonPink = Color(0xFFFF59E4)
+val NeonBlue = Color(0xFF44C0FF)
+val JapanMidNight = Color(0xFF1A1B2B)
+val DeepViolet = Color(0xFF232342)

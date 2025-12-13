@@ -1,7 +1,5 @@
 package com.monomori.ui.screens.home
 
-import androidx.compose.ui.graphics.Shader
-import androidx.compose.ui.graphics.RenderEffect
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -15,10 +13,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.TileMode
-import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.*
+import androidx.compose.ui.graphics.BlurEffect
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -26,16 +22,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.monomori.R
 import com.monomori.data.model.CollectionCategory
-import androidx.annotation.RequiresApi
-import android.os.Build
-
-val NeonPink = Color(0xFFFF59E4)
-val NeonBlue = Color(0xFF44C0FF)
-val JapanMidNight = Color(0xFF1A1B2B)
-val DeepViolet = Color(0xFF232342)
+import androidx.compose.ui.graphics.TileMode
+import com.monomori.ui.theme.NeonPink
+import com.monomori.ui.theme.NeonBlue
+import com.monomori.ui.theme.JapanMidNight
+import com.monomori.ui.theme.DeepViolet
 
 @OptIn(ExperimentalMaterial3Api::class)
-@RequiresApi(Build.VERSION_CODES.S)
 @Composable
 fun HomeScreen(
     onNavigateToSettings: () -> Unit,
@@ -100,7 +93,10 @@ fun HomeScreen(
                         .fillMaxWidth()
                         .background(
                             Brush.verticalGradient(
-                                colors = listOf(NeonBlue.copy(alpha = 0.24f), NeonPink.copy(alpha = 0.14f))
+                                colors = listOf(
+                                    NeonBlue.copy(alpha = 0.24f),
+                                    NeonPink.copy(alpha = 0.14f)
+                                )
                             ),
                             shape = RoundedCornerShape(22.dp)
                         )
@@ -184,7 +180,7 @@ fun NeonCategoryCard(
                     Brush.verticalGradient(
                         colors = when (category) {
                             CollectionCategory.TRADING_CARDS ->
-                                listOf(NeonBlue.copy(alpha = 0.13f), NeonPink.copy(alpha = 0.16f)) // REVERSED!
+                                listOf(NeonBlue.copy(alpha = 0.13f), NeonPink.copy(alpha = 0.16f))
                             CollectionCategory.MODEL_KITS ->
                                 listOf(NeonBlue.copy(alpha = 0.18f), NeonPink.copy(alpha = 0.10f))
                             else ->
@@ -208,7 +204,7 @@ fun NeonCategoryCard(
                     modifier = Modifier
                         .size(62.dp)
                         .graphicsLayer {
-                            renderEffect = RenderEffect.blur(30f, 30f, Shader.TileMode.Clamp)
+                            renderEffect = BlurEffect(30f, 30f, TileMode.Clamp)
                             alpha = 0.6f
                         }
                         .then(

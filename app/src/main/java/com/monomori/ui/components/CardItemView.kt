@@ -5,7 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.BrokenImage
+import androidx.compose.material.icons.filled.ImageNotSupported
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -77,7 +77,7 @@ fun CardItemView(
                 } else {
                     // Placeholder when no image
                     Icon(
-                        imageVector = Icons.Filled.BrokenImage,
+                        imageVector = Icons.Filled.ImageNotSupported,
                         contentDescription = "No image",
                         modifier = Modifier
                             .align(Alignment.Center)

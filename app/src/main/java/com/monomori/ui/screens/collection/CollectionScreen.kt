@@ -28,11 +28,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.monomori.data.local.entity.BookEntity
-
-val NeonPink = Color(0xFFFF59E4)
-val NeonBlue = Color(0xFF44C0FF)
-val JapanMidNight = Color(0xFF1A1B2B)
-val DeepViolet = Color(0xFF232342)
+import com.monomori.ui.theme.NeonPink
+import com.monomori.ui.theme.NeonBlue
+import com.monomori.ui.theme.JapanMidNight
+import com.monomori.ui.theme.DeepViolet
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

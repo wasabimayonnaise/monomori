@@ -93,6 +93,8 @@ dependencies {
     implementation ("androidx.compose.foundation:foundation")
     implementation ("androidx.compose.runtime:runtime")
     implementation ("androidx.compose.ui:ui-tooling-preview")
+    implementation("androidx.compose.material:material-icons-extended")
+    implementation("androidx.compose.ui:ui:1.10.0")
     debugImplementation ("androidx.compose.ui:ui-tooling")
     
     // Navigation
